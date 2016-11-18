@@ -296,6 +296,7 @@ mouseidle($('#idle')[0], 3000, 'hide-cursor')
 list.on('select', function () {
   $('#controls-name')[0].innerText = list.selected.name
   media.play('http://127.0.0.1:' + server.address().port + '/' + list.selected.id)
+  onplaytoggle()
   if (list.selected.subtitles) onsubs(list.selected.subtitles)
   updatePlaylist()
 })
