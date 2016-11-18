@@ -716,3 +716,38 @@ pbrateSlider.setAttribute("max", 4)
 pbrateSlider.setAttribute("step", 0.25)
 updatePlaybackRate(1)
 updatePlaybackRateSlider(pbrateSlider)
+
+const midi = require('midi')
+
+const input = new midi.input()
+input.getPortCount()
+input.getPortName(0)
+
+function handleMessage(e) {
+  clearTimeout(this.timer)
+
+  this.count = this.count || 0
+
+  this.timer = setTimeout(() => {
+    if (this.count === 1) {
+      onplaytoggle()
+    }
+    else if (this.count === 2) {
+      onnexttrack()
+    } else {
+      onprevioustrack()
+    }
+
+    this.count = 0
+  }, 250)
+
+  this.count = Math.min(3, this.count + 1)
+}
+
+input.on('message', function(_deltaTime, message) {
+  if (message[0] === 144 && message[2] === 0) {
+    handleMessage()
+  }
+})
+
+input.openPort(0)
