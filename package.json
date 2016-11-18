@@ -13,6 +13,7 @@
     "end-of-stream": "^1.1.0",
     "filereader-stream": "^0.2.0",
     "ionicons": "^2.0.1",
+    "midi": "^0.9.5",
     "minimist": "^1.1.1",
     "multicast-dns": "^2.0.0",
     "network-address": "^1.0.0",
@@ -27,7 +28,8 @@
   },
   "devDependencies": {
     "electron-packager": "^5.1.1",
-    "electron-prebuilt": "0.35.4"
+    "electron-prebuilt": "0.35.4",
+    "electron-rebuild": "^1.4.0"
   },
   "bin": {
     "playback": "./app.js"
